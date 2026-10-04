@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surat Maaf Untukmu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040b24;--bg2:#0e2a6e;--card:#143c94;--gold:#8ec5ff;--cream:#e8f2ff;--red:#1d4ed8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#040b24}}
+:root[data-theme="dark"]{--bg:#040b24}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--bg);color:var(--cream);font-family:Poppins,system-ui,sans-serif;scroll-behavior:smooth}
+.serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--gold)}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 22px;text-align:center;background:radial-gradient(ellipse at top,var(--bg2),var(--bg) 70%)}
+.hide{display:none!important}
+.reveal{opacity:0;transform:translateY(30px);transition:1s}.reveal.show{opacity:1;transform:none}
+button{font:inherit;cursor:pointer}
+.btn{border:1px solid var(--gold);background:transparent;color:var(--cream);padding:10px 26px;border-radius:30px;transition:.3s}
+.btn:hover{background:var(--gold);color:var(--bg)}
+/* PIN */
+#pin h1{font-size:1.9rem;margin-bottom:6px}
+#pin p{font-size:.85rem;opacity:.8;margin-bottom:22px}
+.dots{display:flex;gap:12px;margin-bottom:26px}
+.dots i{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--gold)}
+.dots i.on{background:var(--gold)}
+.pad{display:grid;grid-template-columns:repeat(3,70px);gap:14px}
+.pad button{height:70px;border-radius:50%;border:1px solid #8ec5ff66;background:#ffffff0d;color:var(--cream);font-size:1.4rem}
+.pad button:active{background:var(--gold);color:var(--bg)}
+.shake{animation:sh .4s}@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+#err{height:20px;margin:14px 0 8px;font-size:.8rem;color:#ff9b9b}
+/* Amplop */
+.env{position:relative;width:min(300px,80vw);height:200px;background:var(--red);border-radius:6px;box-shadow:0 20px 50px #000a;cursor:pointer;margin:30px 0}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49.5%,#0003 50%) ,linear-gradient(to bottom left,transparent 49.5%,#0003 50%);border-radius:6px}
+.env .flap{position:absolute;top:0;left:0;right:0;height:110px;background:#1e3a8a;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:1s}
+.seal{position:absolute;left:50%;top:84px;transform:translateX(-50%);width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e0f0ff,#3b82d6);box-shadow:0 4px 10px #0008;display:grid;place-items:center;font-size:1.3rem;animation:pulse 1.6s infinite;z-index:2}
+@keyframes pulse{50%{transform:translateX(-50%) scale(1.12)}}
+.env.open .flap{transform:rotateX(180deg)}.env.open .seal{opacity:0;transition:.5s}
+/* Isi */
+h2{font-size:clamp(2rem,8vw,3rem);margin:8px 0}
+.small{letter-spacing:.3em;font-size:.7rem;text-transform:uppercase;opacity:.85}
+.player{display:flex;align-items:center;gap:14px;background:#ffffff12;border:1px solid var(--gold);border-radius:14px;padding:14px 18px;margin:26px 0;max-width:340px;width:100%}
+.player .cover{width:54px;height:54px;border-radius:8px;background:linear-gradient(135deg,var(--card),#3b82f6);display:grid;place-items:center;font-size:1.5rem}
+.player .t{flex:1;text-align:left;font-size:.85rem}.player .t small{opacity:.7}
+.player button{border:0;background:var(--gold);color:var(--bg);width:40px;height:40px;border-radius:50%;font-size:1rem}
+.letter{max-width:480px;background:var(--cream);color:#0f1f3d;padding:34px 28px;border-radius:6px;text-align:left;line-height:1.85;font-size:.93rem;box-shadow:0 18px 40px #000a;position:relative}
+.letter::after{content:"💌";position:absolute;right:-8px;top:-18px;font-size:2rem;transform:rotate(12deg)}
+.letter p{margin-bottom:12px}
+.polas{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:24px}
+.pola{background:#fff;color:#0f1f3d;padding:10px 10px 14px;width: 190px;box-shadow:0 8px 20px #0009;font-size:.75rem;transition:.3s}
+.pola:nth-child(odd){transform:rotate(-4deg)}.pola:nth-child(even){transform:rotate(4deg)}.pola:hover{transform:scale(1.07)}
+.pola div{height:110px;background:linear-gradient(135deg,#bfdcff,#5b8fdc);display:grid;place-items:center;font-size:2.2rem;margin-bottom:8px}
+.pola img{width: 175px;height: 200px;;object-fit:cover;margin-bottom:8px;display:block}
+.cards{display:grid;gap:14px;max-width:600px;width:100%;margin-top:22px}
+.cards div{background:var(--cream);color:#0f1f3d;border-radius:14px;padding:16px;font-size:.88rem;text-align:left;border-left:6px solid var(--red)}
+.cards b{display:block;margin-bottom:4px;color:var(--red)}
+/* Penutup */
+.arena{position:relative;width:100%;max-width:380px;height:130px;margin-top:22px}
+.arena button{position:absolute;top:30px}
+#yes{left:6%;background:var(--gold);color:var(--bg);border:0;padding:12px 28px;border-radius:30px;font-weight:500;transition:transform .3s}
+#no{right:6%;border:1px solid var(--gold);background:transparent;color:var(--cream);padding:12px 24px;border-radius:30px;transition:.25s}
+.petal{position:fixed;top:-30px;pointer-events:none;animation:fall linear forwards;z-index:9}
+@keyframes fall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx,0),115vh) rotate(var(--rot,360deg));opacity:.3}}
+</style>
+</head>
+<body>
+
+<!-- 1. PIN -->
+<section id="pin">
+  <div style="font-size:2.4rem">🔒</div>
+  <h1 class="serif">Masukkan 6 Digit PIN</h1>
+  <p>Ada sesuatu yang ingin aku sampaikan.<br>Hanya untuk kamu.</p>
+  <div class="dots" id="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="pad" id="pad"></div>
+  <div id="err"></div>
+  <button class="btn" id="hintBtn" style="margin-top:6px;padding:8px 20px;font-size:.8rem">💡 Lihat petunjuk</button>
+  <p id="hint" class="hide" style="margin:14px 0 0;max-width:300px;font-size:.85rem;line-height:1.6;color:var(--gold)"></p>
+</section>
+
+<!-- 2. Amplop -->
+<section id="amplop" class="hide">
+  <div class="small">Sebuah Surat</div>
+  <h2 class="serif">Untuk Kamu <span style="font-size:.6em">dari <span class="from"></span></span></h2>
+  <div class="env" id="env"><div class="flap"></div><div class="seal">💙</div></div>
+  <button class="btn" onclick="openEnv()">Klik segel untuk membuka</button>
+</section>
+
+<main id="isi" class="hide">
+  <!-- 3. Pembuka + musik -->
+  <section>
+    <div class="reveal">
+      <div class="small">Untuk yang tersayang</div>
+      <h2 class="serif to"></h2>
+      <p style="opacity:.8;font-size:.9rem">Maaf, ya…</p>
+      <div class="player">
+        <div class="cover">🎵</div>
+        <div class="t"><b>Putar musiknya dulu</b><br><small id="song"></small></div>
+        <button id="play">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Surat -->
+  <section>
+    <div class="reveal">
+      <h2 class="serif">Surat Maaf<br>untukmu</h2>
+      <div class="letter" style="margin-top:26px">
+        <p>Halo, <b class="to"></b>…</p>
+        <p>Aku minta maaf ya sayang kejadian tadi malam aku salah aku ga ingat waktu aku main sampai tengah malam dan itu sama cewe lain .</p>
+        <p>Aku sadar apa yang aku perbuat kemaren buat kamu skait hati banget dan aku sadar aku salah, aku minta maaf ya sayang aku sadar perbuatan aku kemarin kesalahan fatal .</p>
+        <p>Maaf ya kalo kelakuan aku bikin kamu cape sama aku akusadar aku selalu bikin kamu cape sama aku, aku mmohon jangan tinggalin aku ya, i hope u know i love u more than anything, jadi pasangan terakhir aku ya aku ga bisa bayangin kalau kamu pergi dari aku, aku minta maaf ya sayang kejadian kemarin malam, i love u sayang jangan tinggalin aku ya🤍🤍🤍 .</p>
+        <p style="text-align:right">Dengan tulus,<br><b class="from"></b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Cerita kita -->
+  <section>
+    <div class="reveal">
+      <div class="small">Kenangan yang aku jaga</div>
+      <h2 class="serif">Ini cerita kita</h2>
+      <div class="polas">
+        <div class="pola">
+          <img src="foto1.jpg" alt="">
+          Mirror Selfie kita pertama kali
+          </div>
+          <div class="pola">
+          <img src="foto3.jpg"">
+          kalo kita sekota pasti kita ketemuan setiap hari sama ngopi bareng
+          </div>
+        <div class="pola">
+          <img src="FOTO4.jpeg" alt="">
+          Yang aku rinduin adalah kamu
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Alasan -->
+  <section>
+    <div class="reveal">
+      <div class="small">Yang bikin aku ga bisa kalo ga sama kamu</div>
+      <h2 class="serif">Alasan aku</h2>
+      <div class="cards">
+        <div><b>Pengertiannya kamu</b>Ga tau kenapa aku kalo kamu pengertiaan ke aku kaya bikin aku makin disayang gitu.</div>
+        <div><b>Bawel nya kamu</b>Kamu kalo bawel itu lucu banget tau.</div>
+        <div><b>And the only one</b>CANTIKKK NYAA KAMUU LEMBUTT HATINYAA KAMUUUU POKONYA KAMUU PERFECTTT BANGETTT NGETTT NGETTT AKUUU KOK BISAAA YA DAPATT BIDADARIIII KAYAA KAMUUUU</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Penutup -->
+  <section>
+    <div class="reveal">
+      <p style="opacity:.85">Terima kasih sudah membaca sampai akhir.</p>
+      <h2 class="serif" id="q">Maafin aku, ya?</h2>
+      <div class="arena" id="arena">
+        <button id="yes">Aku maafin 💙</button>
+        <button id="no">Belum</button>
+      </div>
+      <p id="thanks" class="hide" style="margin-top:26px;line-height:1.8">Terima kasih sudah memberi aku kesempatan.<br>Aku janji tidak akan menyia-nyiakannya. 💙</p>
+    </div>
+  </section>
+</main>
+
+<script>
+/* ===== UBAH DI SINI ===== */
+const PIN = "230825";               // PIN 6 angka
+const HINT = "Tanggal jadian kita"; // petunjuk PIN
+const LAGU = "Good Morning Everyone ft. Uan Kaisar - Istimewa Lyric Video.mp3";                   // nama file lagu (taruh di folder yang sama)
+const JUDUL_LAGU = "Good Morning Everyone ft. Uan Kaisar - Istimewa"; // teks yang tampil di pemutar
+const NAMA_PENERIMA = "ALodia";  // nama orang yang dituju
+const NAMA_PENGIRIM = "Nauby";   // nama kamu
+
+/* ======================== */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+$$('.to').forEach(e=>e.textContent=NAMA_PENERIMA);
+$$('.from').forEach(e=>e.textContent=NAMA_PENGIRIM);
+
+// PIN
+let input="";
+const pad=$('#pad');
+["1","2","3","4","5","6","7","8","9","","0","⌫"].forEach(k=>{
+  const b=document.createElement('button');
+  if(!k){b.style.visibility='hidden'}else{b.textContent=k;b.onclick=()=>press(k)}
+  pad.appendChild(b);
+});
+function paint(){$$('#dots i').forEach((d,i)=>d.classList.toggle('on',i<input.length))}
+function press(k){
+  if(k==="⌫")input=input.slice(0,-1);else if(input.length<6)input+=k;
+  paint();$('#err').textContent="";
+  if(input.length===6){
+    if(input===PIN){setTimeout(()=>{$('#pin').classList.add('hide');$('#amplop').classList.remove('hide');window.scrollTo(0,0)},250)}
+    else{$('#dots').classList.add('shake');$('#err').textContent="PIN salah, coba lagi ya";if(++salah>=3)$('#hint').classList.remove('hide');
+      setTimeout(()=>{$('#dots').classList.remove('shake');input="";paint()},500)}
+  }
+}
+document.addEventListener('keydown',e=>{if(!$('#pin').classList.contains('hide')){if(/^\d$/.test(e.key))press(e.key);if(e.key==="Backspace")press("⌫")}});
+
+$('#hint').textContent='💡 '+HINT;
+$('#hintBtn').onclick=()=>{$('#hint').classList.toggle('hide')};
+let salah=0;
+// Amplop
+function openEnv(){
+  au.play().then(()=>setPlaying(true)).catch(()=>{});
+  $('#env').classList.add('open');
+  setTimeout(()=>{$('#amplop').classList.add('hide');$('#isi').classList.remove('hide');window.scrollTo(0,0);watch()},1100);
+}
+$('#env').onclick=openEnv;
+function watch(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.2});
+  $$('.reveal').forEach(r=>io.observe(r));
+}
+
+// Musik (file lagu sudah ditanam)
+const au=new Audio(LAGU);au.loop=true;
+const playBtn=$('#play'), song=$('#song');
+song.textContent=JUDUL_LAGU;
+function setPlaying(on){playBtn.textContent=on?"⏸":"▶"}
+au.addEventListener('error',()=>{song.textContent="File lagu tidak ketemu, cek nama dan lokasinya"});
+playBtn.addEventListener('click',()=>{
+  if(au.paused){au.play().then(()=>setPlaying(true)).catch(()=>{song.textContent="Lagu gagal diputar"})}
+  else{au.pause();setPlaying(false)}
+});
+
+// Penutup: tombol "Belum" menghindar, tombol "Maafin" membesar
+const no=$('#no'),yes=$('#yes'),arena=$('#arena');let n=0;
+function dodge(){
+  n++;
+  const x=Math.random()*(arena.clientWidth-no.offsetWidth),y=Math.random()*(arena.clientHeight-no.offsetHeight);
+  no.style.right="auto";no.style.left=x+"px";no.style.top=y+"px";
+  yes.style.transform=`scale(${Math.min(1+n*.12,1.8)})`;
+  $('#q').textContent=["Maafin aku, ya?","Sekali ini aja…","Please? 🥺","Aku janji berubah","Yakin masih belum?"][Math.min(n,4)];
+}
+no.addEventListener('mouseenter',dodge);
+no.addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});
+no.onclick=dodge;
+yes.onclick=()=>{
+  $('#q').textContent="Terima kasih, sayang 💙";
+  arena.classList.add('hide');$('#thanks').classList.remove('hide');
+  const bunga=["🌸","🌺","🌷","🌹","💐","🌼","🪻","🌻"];
+  for(let i=0;i<280825;i++)setTimeout(()=>{
+    const p=document.createElement('div');p.className='petal';
+    p.textContent=bunga[Math.floor(Math.random()*bunga.length)];
+    p.style.left=Math.random()*100+'vw';
+    p.style.fontSize=(18+Math.random()*30)+'px';
+    p.style.setProperty('--dx',(Math.random()*160-80)+'px');
+    p.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+    const d=3.5+Math.random()*3.5;
+    p.style.animationDuration=d+'s';
+    document.body.appendChild(p);setTimeout(()=>p.remove(),d*1000+200);
+  },i*8);
+};
+</script>
+</body>
+</html> 
